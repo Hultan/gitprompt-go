@@ -32,7 +32,7 @@ func (a *AdvancedPrompt) GetPrompt() string {
 			}
 		}
 	}
-	return result
+	return a.Config.PromptPrefix + result + a.Config.PromptSuffix
 }
 
 func (a *AdvancedPrompt) getPromptPart(part string) string {

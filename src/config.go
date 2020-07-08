@@ -12,6 +12,8 @@ type Config struct {
 	Format string `json:format`
 	IncludeZeroValues bool `json:includeZeroValues`
 	Separator string `json:separator`
+	PromptPrefix string `json:promptPrefix`
+	PromptSuffix string `json:promptSuffix`
 	Branch struct {
 		Prefix string `json:prefix`
 		Suffix string `json:suffix`

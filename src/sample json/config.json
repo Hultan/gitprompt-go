@@ -1,7 +1,9 @@
 {
-  "format": "($(BRANCH)$(AHEAD)$(BEHIND)$(SEPARATOR)$(UNTRACKED)$(MODIFIED)$(DELETED)$(UNMERGED)$(STAGED))",
-  "includeZeroValues" : true,
+  "format": "$(BRANCH)$(AHEAD)$(BEHIND)$(SEPARATOR)$(UNTRACKED)$(MODIFIED)$(DELETED)$(UNMERGED)$(STAGED)",
+  "includeZeroValues" : false,
   "separator": "|",
+  "promptPrefix": "(",
+  "promptSuffix": ")",
   "branch": {
     "prefix": "",
     "suffix": ""
