@@ -19,8 +19,24 @@ func NewAdvancedPrompt(git *Git, config *Config) *AdvancedPrompt {
 
 func (a *AdvancedPrompt) GetPrompt() string {
 	var result string
+	parts := strings.Split(a.Config.Format, "$(SEPARATOR)")
 
-	result = a.Config.Format
+	var part string
+
+	result = a.getPromptPart(parts[0])
+	if len(parts)>1 {
+		for i := 1; i < len(parts); i++ {
+			part = a.getPromptPart(parts[i])
+			if len(result)>0 && len(part)>0 {
+				result = strings.Join([]string{result, part}, a.Config.Separator)
+			}
+		}
+	}
+	return result
+}
+
+func (a *AdvancedPrompt) getPromptPart(part string) string {
+	var result string = part
 
 	result = strings.ReplaceAll(result, "$(SEPARATOR)",a.Config.Separator)
 	branch := a.getBranch(a.Git, a.Config)
