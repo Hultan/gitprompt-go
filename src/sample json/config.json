@@ -1,0 +1,37 @@
+{
+  "format": "($(BRANCH)$(AHEAD)$(BEHIND)$(SEPARATOR)$(UNTRACKED)$(MODIFIED)$(DELETED)$(UNMERGED)$(STAGED))",
+  "includeZeroValues" : true,
+  "separator": "|",
+  "branch": {
+    "prefix": "",
+    "suffix": ""
+  },
+  "ahead": {
+    "prefix": "↑",
+    "suffix": ""
+  },
+  "behind": {
+    "prefix": "↓",
+    "suffix": ""
+  },
+  "untracked": {
+    "prefix": "+",
+    "suffix": ""
+  },
+  "modified": {
+    "prefix": "~",
+    "suffix": ""
+  },
+  "deleted": {
+    "prefix": "-",
+    "suffix": ""
+  },
+  "unmerged": {
+    "prefix": "x",
+    "suffix": ""
+  },
+  "staged": {
+    "prefix": "•",
+    "suffix": ""
+  }
+}

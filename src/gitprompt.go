@@ -20,22 +20,18 @@ func (g *GitPrompt) getPrompt() {
 	parser:=NewCommandLineParser()
 	err := parser.Parse()
 	if err != nil {
-		g.Prompt = err.Error() + "\n\n" + g.usage()
+		g.Prompt = err.Error() + "\n\n" + g.getUsage()
 		return
 	}
 
 	// If the user have asked for help, give it to them
 	if parser.Help {
-		g.Prompt = g.usage()
+		g.Prompt = g.getUsage()
 		return
 	}
 
 	// Get the git status
 	git:=NewGitStatus()
-	if git.Error!=nil {
-		g.Prompt = git.Error.Error()
-		return
-	}
 
 	// If it is not a git repository, just leave
 	if !git.IsGit {
@@ -45,10 +41,38 @@ func (g *GitPrompt) getPrompt() {
 
 	// The user have asked for a verbose git status
 	if parser.Verbose {
-		g.Prompt = g.verbose(git)
+		g.Prompt = g.getVerbosePrompt(git)
 		return
 	}
 
+	config := NewConfig()
+	if config.ConfigExists() {
+		config.Load()
+		advanced := NewAdvancedPrompt(git, config)
+		g.Prompt = advanced.GetPrompt()
+	} else {
+		g.Prompt = g.getDefaultPrompt(git)
+	}
+}
+
+func (g *GitPrompt) getVerbosePrompt(git *Git) string {
+	var result string
+
+	result += fmt.Sprintf("Branch    : %s (%d ahead, %d behind)\n", git.Branch, git.Ahead, git.Behind)
+	result += fmt.Sprintf("Staged    : %d\n", git.Staged)
+	result += fmt.Sprintf("Modified  : %d\n", git.Modified)
+	result += fmt.Sprintf("Deleted   : %d\n", git.Deleted)
+	result += fmt.Sprintf("Unmerged  : %d\n", git.Unmerged)
+	result += fmt.Sprintf("Untracked : %d\n", git.Untracked)
+
+	return result
+}
+
+func (g *GitPrompt) getUsage() string {
+	return "Usage : gitprompt-go [-h] [-d] [-v]"
+}
+
+func (g *GitPrompt) getDefaultPrompt(git *Git) string {
 	// Create and return the normal git prompt
 	var result string
 	if git.Branch!="" {
@@ -83,22 +107,5 @@ func (g *GitPrompt) getPrompt() {
 		result += "•" + strconv.Itoa(git.Staged)
 	}
 
-	g.Prompt = result
-}
-
-func (g *GitPrompt) verbose(git *Git) string {
-	var result string
-
-	result += fmt.Sprintf("Branch    : %s (%d ahead, %d behind)\n", git.Branch, git.Ahead, git.Behind)
-	result += fmt.Sprintf("Staged    : %d\n", git.Staged)
-	result += fmt.Sprintf("Modified  : %d\n", git.Modified)
-	result += fmt.Sprintf("Deleted   : %d\n", git.Deleted)
-	result += fmt.Sprintf("Unmerged  : %d\n", git.Unmerged)
-	result += fmt.Sprintf("Untracked : %d\n", git.Untracked)
-
 	return result
-}
-
-func (g *GitPrompt) usage() string {
-	return "Usage : gitprompt-go [-h] [-d] [-v]"
 }
