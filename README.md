@@ -1,2 +1,2 @@
 # gitprompt-go
-A git prompt bor bash terminals
+A git prompt for Bash terminals
