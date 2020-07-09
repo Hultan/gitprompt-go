@@ -2,7 +2,7 @@
 
 ## Usage
 
-This started out as a copy of gitprompt-rs (https://github.com/9ary/gitprompt-rs), but written in **go** instead of **rust**.
+This started out as a copy of gitprompt-rs (https://github.com/9ary/gitprompt-rs), but written in **go** instead of **rust**. Gitprompt-rs did not work for me, I needed more control over colors, so I decided to write my own version in go. All credits for the general git functionality goes to **9ary**. 
 
 By default it will produce a string like this (depending on the directory you are in) :
 
