@@ -1,6 +1,7 @@
 # gitprompt-go
 
-##Usage
+## Usage
+
 This started out as a copy of gitprompt-rs (https://github.com/9ary/gitprompt-rs), but written in **go** instead of **rust**.
 
 By default it will produce a string like this (depending on the directory you are in) :
