@@ -4,9 +4,9 @@
   "separator": "|",
   "promptPrefix": "(",
   "promptSuffix": ")",
-  "branch": {
-    "prefix": "",
-    "suffix": ""
+  "branch" :  {
+    "prefix": "$(ESC)[34m",
+    "suffix": "$(ESC)[90m"
   },
   "ahead": {
     "prefix": "↑",
