@@ -68,7 +68,13 @@ A sample config file:
 
 Use `$(ESC)` instead of `\x1b` or `\033`, it will be replaced by the code later.
 
-After following Cris Titus Tech:s video (https://www.youtube.com/watch?v=iaXQdyHRL8M) and adding `$(gitprompt-go)` to your shell prompt, and creating the config file `config.json` above in the `~/.config/gitprompt-go` folder ,your prompt should look something like this:
+After completing the following steps:
+
+* Follow Cris Titus Tech:s video (https://www.youtube.com/watch?v=iaXQdyHRL8M)
+* Adding `$(gitprompt-go)` to your shell prompt (for example in .bashrc:    PS1="$TITLEBAR\n${PROMT_USER}${SEPARATOR_1}${PROMT_HOST}${SEPARATOR_2}${PROMT_PWD}\$(gitprompt-go)${SEPARATOR_3}${PROMT_INPUT}")
+* Creating the config file `config.json` above in the `~/.config/gitprompt-go` folder 
+
+Your prompt should look something like this:
 
 ![gitprompt-go](gitprompt.png)
 
