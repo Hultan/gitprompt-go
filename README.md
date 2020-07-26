@@ -27,7 +27,7 @@ A sample config file:
  ```
  {
    "format": "$(BRANCH)$(AHEAD)$(BEHIND)$(SEPARATOR)$(UNTRACKED)$(MODIFIED)$(DELETED)$(UNMERGED)$(STAGED)",
-   "includeZeroValues" : false,
+   "includeZeroValues" : true,
    "separator": "|",
    "promptPrefix": "(",
    "promptSuffix": ")",
