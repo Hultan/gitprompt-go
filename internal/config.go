@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"encoding/json"
@@ -86,7 +86,7 @@ func (config *Config) Load() error {
 func getConfigPath() string {
 	home := getHomeDirectory()
 
-	return path.Join(home, ".config/gitprompt-go/config.json")
+	return path.Join(home, ".configs/gitprompt-go/configs.json")
 }
 
 // Get current users home directory

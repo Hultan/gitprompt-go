@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"fmt"
@@ -17,7 +17,7 @@ func NewGitPrompt() *GitPrompt {
 
 func (g *GitPrompt) getPrompt() {
 	// Parse the command line
-	parser:=NewCommandLineParser()
+	parser:= NewCommandLineParser()
 	err := parser.Parse()
 	if err != nil {
 		g.Prompt = err.Error() + "\n\n" + g.getUsage()
@@ -31,7 +31,7 @@ func (g *GitPrompt) getPrompt() {
 	}
 
 	// Get the git status
-	git:=NewGitStatus()
+	git:= NewGitStatus()
 
 	// If it is not a git repository, just leave
 	if !git.IsGit {
