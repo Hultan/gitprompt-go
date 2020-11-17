@@ -9,43 +9,43 @@ import (
 )
 
 type Config struct {
-	Format string `json:format`
-	IncludeZeroValues bool `json:includeZeroValues`
-	Separator string `json:separator`
-	PromptPrefix string `json:promptPrefix`
-	PromptSuffix string `json:promptSuffix`
+	Format string `json:"format"`
+	IncludeZeroValues bool `json:"includeZeroValues"`
+	Separator string `json:"separator"`
+	PromptPrefix string `json:"promptPrefix"`
+	PromptSuffix string `json:"promptSuffix"`
 	Branch struct {
-		Prefix string `json:prefix`
-		Suffix string `json:suffix`
-	} `json:branch`
+		Prefix string `json:"prefix"`
+		Suffix string `json:"suffix"`
+	} `json:"branch"`
 	Ahead struct {
-		Prefix string `json:prefix`
-		Suffix string `json:suffix`
-	} `json:ahead`
+		Prefix string `json:"prefix"`
+		Suffix string `json:"suffix"`
+	} `json:"ahead"`
 	Behind struct {
-		Prefix string `json:prefix`
-		Suffix string `json:suffix`
-	} `json:behind`
+		Prefix string `json:"prefix"`
+		Suffix string `json:"suffix"`
+	} `json:"behind"`
 	Untracked struct {
-		Prefix string `json:prefix`
-		Suffix string `json:suffix`
-	} `json:untracked`
+		Prefix string `json:"prefix"`
+		Suffix string `json:"suffix"`
+	} `json:"untracked"`
 	Modified struct {
-		Prefix string `json:prefix`
-		Suffix string `json:suffix`
-	} `json:modified`
+		Prefix string `json:"prefix"`
+		Suffix string `json:"suffix"`
+	} `json:"modified"`
 	Deleted struct {
-		Prefix string `json:prefix`
-		Suffix string `json:suffix`
-	} `json:deleted`
+		Prefix string `json:"prefix"`
+		Suffix string `json:"suffix"`
+	} `json:"deleted"`
 	Unmerged struct {
-		Prefix string `json:prefix`
-		Suffix string `json:suffix`
-	} `json:unmerged`
+		Prefix string `json:"prefix"`
+		Suffix string `json:"suffix"`
+	} `json:"unmerged"`
 	Staged struct {
-		Prefix string `json:prefix`
-		Suffix string `json:suffix`
-	} `json:staged`
+		Prefix string `json:"prefix"`
+		Suffix string `json:"suffix"`
+	} `json:"staged"`
 }
 
 func NewConfig() *Config {
@@ -54,19 +54,19 @@ func NewConfig() *Config {
 
 func (config *Config) ConfigExists() bool {
 	// Get the path to the config file
-	path := getConfigPath()
+	configPath := getConfigPath()
 
-	_, err := os.Stat(path)
+	_, err := os.Stat(configPath)
 	return !os.IsNotExist(err)
 }
 
 // Load : Loads the configuration file
 func (config *Config) Load() error {
 	// Get the path to the config file
-	path := getConfigPath()
+	configPath := getConfigPath()
 
 	// Open config file
-	configFile, err := os.Open(path)
+	configFile, err := os.Open(configPath)
 
 	// Handle errors
 	if err != nil {
