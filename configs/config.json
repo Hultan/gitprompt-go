@@ -6,7 +6,7 @@
   "promptSuffix": ")",
   "branch" :  {
     "prefix": "$(ESC)[34m",
-    "suffix": "$(ESC)[90m"
+    "suffix": "$(ESC)[0m"
   },
   "ahead": {
     "prefix": "↑",
