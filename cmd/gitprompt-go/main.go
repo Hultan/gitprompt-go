@@ -7,8 +7,8 @@ import (
 
 func main() {
 	// Create the git prompt object
-	prompt:= internal.NewGitPrompt()
+	prompt := internal.NewGitPrompt()
+
 	// Print the git prompt
 	fmt.Println(prompt.Prompt)
-
 }
